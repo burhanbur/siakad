@@ -147,7 +147,7 @@ if (!function_exists('generateRandomString')) {
     }
 }
 
-if (!function_exists('generateRandomUpperCaseString')) {
+if (!function_exists('generateRandomUpperCaseAlphabet')) {
     function generateRandomUpperCaseAlphabet($length = null) {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -161,7 +161,7 @@ if (!function_exists('generateRandomUpperCaseString')) {
     }
 }
 
-if (!function_exists('generateRandomLowerCaseString')) {
+if (!function_exists('generateRandomUpperCaseAlphabet')) {
     function generateRandomUpperCaseAlphabet($length = null) {
         $characters = 'abcdefghijklmnopqrstuvwxyz';
         $charactersLength = strlen($characters);
