@@ -154,6 +154,13 @@
 								</a>
 							</li>
 
+							<li class="kt-menu__item  @if(\Request::segment(2) == 'users') kt-menu__item--active @endif" aria-haspopup="true">
+								<a href="" class="kt-menu__link ">
+									<i class="kt-menu__link-icon flaticon2-user"></i>
+									<span class="kt-menu__link-text">Pengguna</span>
+								</a>
+							</li>
+
 							<li class="kt-menu__item @if(\Request::segment(2) == 'laporan') kt-menu__item--open kt-menu__item--here @endif kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">								
 								<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
 									<i class="kt-menu__link-icon flaticon2-document"></i>
