@@ -1,5 +1,5 @@
 <?php
-namespace App\Utilities;
+namespace App\Services;
 
 use Illuminate\Support\Str;
 

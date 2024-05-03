@@ -70,5 +70,11 @@ class RolesTableSeeder extends Seeder
             'name' => 'admin_study_program', 
             'guard_name' => 'web'
          ]);
+
+         Role::create([
+            'id' => '10',
+            'name' => 'pddikti', 
+            'guard_name' => 'web'
+         ]);
     }
 }
