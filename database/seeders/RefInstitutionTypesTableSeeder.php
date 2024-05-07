@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\RefAdministrativeStatus;
+use App\Models\RefInstitutionType;
 
-class RefAdministrativeStatusTableSeeder extends Seeder
+class RefInstitutionTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,21 +21,21 @@ class RefAdministrativeStatusTableSeeder extends Seeder
         $data = [
             [
                 'id' => 1,
-                'name' => 'Sudah Membayar',
+                'name' => 'Universitas',
                 'is_active' => 1,
             ],
             [
                 'id' => 2,
-                'name' => 'Belum Membayar',
+                'name' => 'Fakultas',
                 'is_active' => 1,
             ],
             [
                 'id' => 3,
-                'name' => 'Menunggu Konfirmasi',
+                'name' => 'Program Studi',
                 'is_active' => 1,
             ],
         ];
 
-        RefAdministrativeStatus::insert($data);
+        RefInstitutionType::insert($data);
     }
 }

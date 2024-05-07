@@ -96,11 +96,156 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::get('home', [AdminHomeController::class, 'index'])->name('home');
 
-        Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
+        Route::group(['prefix' => 'education', 'as' => 'education.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'event', 'as' => 'event.'], function() {
 
         });
 
         Route::group(['prefix' => 'institution', 'as' => 'institution.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
+
+        });
+    });
+
+    Route::group(['middleware' => ['role:academic'], 'prefix' => 'academic', 'as' => 'academic.'], function() {
+        Route::get('home', [AcademicHomeController::class, 'index'])->name('home');
+
+        Route::group(['prefix' => 'period', 'as' => 'period.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'calendar', 'as' => 'calendar.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'class', 'as' => 'class.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'curriculum', 'as' => 'curriculum.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'exam', 'as' => 'exam.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'grade', 'as' => 'grade.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'report', 'as' => 'report.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'schedule', 'as' => 'schedule.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'subject', 'as' => 'subject.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'transcript', 'as' => 'transcript.'], function() {
+
+        });
+
+    });
+
+    Route::group(['middleware' => ['role:student'], 'prefix' => 'student', 'as' => 'student.'], function() {
+        Route::get('home', [StudentHomeController::class, 'index'])->name('home');
+
+        Route::group(['prefix' => 'calendar', 'as' => 'calendar.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'curriculum', 'as' => 'curriculum.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'exam', 'as' => 'exam.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'installment', 'as' => 'installment.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'payment', 'as' => 'payment.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'schedule', 'as' => 'schedule.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'study-plan', 'as' => 'study-plan.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'transcript', 'as' => 'transcript.'], function() {
+
+        });
+    });
+
+    Route::group(['middleware' => ['role:lecture'], 'prefix' => 'lecture', 'as' => 'lecture.'], function() {
+        Route::get('home', [LectureHomeController::class, 'index'])->name('home');
+
+        Route::group(['prefix' => 'class', 'as' => 'class.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'curriculum', 'as' => 'curriculum.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'exam', 'as' => 'exam.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'schedule', 'as' => 'schedule.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+
+        });
+    });
+
+    Route::group(['middleware' => ['role:finance'], 'prefix' => 'finance', 'as' => 'finance.'], function() {
+        Route::get('home', [FinanceHomeController::class, 'index'])->name('home');
+
+        Route::group(['prefix' => 'installment', 'as' => 'installment.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'payment', 'as' => 'payment.'], function() {
 
         });
 
@@ -109,28 +254,35 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    Route::group(['middleware' => ['role:academic'], 'prefix' => 'academic', 'as' => 'academic.'], function() {
-        Route::get('home', [AcademicHomeController::class, 'index'])->name('home');
-
-    });
-
-    Route::group(['middleware' => ['role:student'], 'prefix' => 'student', 'as' => 'student.'], function() {
-        Route::get('home', [StudentHomeController::class, 'index'])->name('home');
-
-    });
-
-    Route::group(['middleware' => ['role:lecture'], 'prefix' => 'lecture', 'as' => 'lecture.'], function() {
-        Route::get('home', [LectureHomeController::class, 'index'])->name('home');
-
-    });
-
-    Route::group(['middleware' => ['role:finance'], 'prefix' => 'finance', 'as' => 'finance.'], function() {
-        Route::get('home', [FinanceHomeController::class, 'index'])->name('home');
-
-    });
-
     Route::group(['middleware' => ['role:pddikti'], 'prefix' => 'pddikti', 'as' => 'pddikti.'], function() {
         Route::get('home', [PddiktiHomeController::class, 'index'])->name('home');
 
+        Route::group(['prefix' => 'class', 'as' => 'class.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'curriculum', 'as' => 'curriculum.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'institution', 'as' => 'institution.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'study-activity', 'as' => 'study-activity.'], function() {
+
+        });
+
+        Route::group(['prefix' => 'subject', 'as' => 'subject.'], function() {
+
+        });
     });
 });

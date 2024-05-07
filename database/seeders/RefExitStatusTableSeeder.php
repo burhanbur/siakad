@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\RefGradeComponent;
+use App\Models\RefExitStatus;
 
-class RefGradeComponentsTableSeeder extends Seeder
+class RefExitStatusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,37 +20,52 @@ class RefGradeComponentsTableSeeder extends Seeder
     {
         $data = [
             [
+                'id' => 0,
+                'name' => 'Selesai Pendidikan Non Gelar',
+                'is_active' => 1,
+            ],
+            [
                 'id' => 1,
-                'name' => 'Ujian Tengah Semester',
+                'name' => 'Lulus',
                 'is_active' => 1,
             ],
             [
                 'id' => 2,
-                'name' => 'Ujian Akhir Semester',
+                'name' => 'Mutasi',
                 'is_active' => 1,
             ],
             [
                 'id' => 3,
-                'name' => 'Tugas',
+                'name' => 'Dikeluarkan',
                 'is_active' => 1,
             ],
             [
                 'id' => 4,
-                'name' => 'Praktikum',
+                'name' => 'Mengundurkan Diri',
                 'is_active' => 1,
             ],
             [
                 'id' => 5,
-                'name' => 'Kuis',
+                'name' => 'Putus Studi',
                 'is_active' => 1,
             ],
             [
                 'id' => 6,
-                'name' => 'Kehadiran',
+                'name' => 'Wafat',
+                'is_active' => 1,
+            ],
+            [
+                'id' => 8,
+                'name' => 'Alih Fungsi',
+                'is_active' => 1,
+            ],
+            [
+                'id' => 9,
+                'name' => 'Pensiun',
                 'is_active' => 1,
             ],
         ];
 
-        RefGradeComponent::insert($data);
+        RefExitStatus::insert($data);
     }
 }

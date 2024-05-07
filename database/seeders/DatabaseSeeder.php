@@ -23,6 +23,19 @@ class DatabaseSeeder extends Seeder
                 UsersTableSeeder::class,
                 RefReligionsTableSeeder::class,
                 RefPresencesTableSeeder::class,
+                RefSessionTypesTableSeeder::class,
+                RefSchoolTypesTableSeeder::class,
+                RefSubjectRegistrationStatusTableSeeder::class,
+                RefFundingTypesTableSeeder::class,
+                RefInstitutionTypesTableSeeder::class,
+                RefGradeComponentsTableSeeder::class,
+                RefFunctionalRolesTableSeeder::class,
+                RefExamTypesTableSeeder::class,
+                RefDaysTableSeeder::class,
+                RefApprovalStatusTableSeeder::class,
+                RefAdministrativeStatusTableSeeder::class,
+                RefExitStatusTableSeeder::class,
+                RefAcademicEventsTableSeeder::class,
             ]);
 
             DB::commit();
