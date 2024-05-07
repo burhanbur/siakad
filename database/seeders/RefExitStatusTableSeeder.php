@@ -20,7 +20,7 @@ class RefExitStatusTableSeeder extends Seeder
     {
         $data = [
             [
-                'id' => 0,
+                'id' => 99,
                 'name' => 'Selesai Pendidikan Non Gelar',
                 'is_active' => 1,
             ],

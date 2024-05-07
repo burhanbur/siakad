@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\RefPresenceStatus;
 
-class RefPresencesTableSeeder extends Seeder
+class RefPresenceStatusTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -131,7 +131,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+        // TODO: cek role_id dan institution_id kemudian redirect ke halaman sesuai dengan rolenya
     }
 
     /**

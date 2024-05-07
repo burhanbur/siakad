@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
                 RolesTableSeeder::class,
                 UsersTableSeeder::class,
                 RefReligionsTableSeeder::class,
-                RefPresencesTableSeeder::class,
+                RefPresenceStatusTableSeeder::class,
                 RefSessionTypesTableSeeder::class,
                 RefSchoolTypesTableSeeder::class,
                 RefSubjectRegistrationStatusTableSeeder::class,

@@ -7,30 +7,22 @@ CREATE TABLE `users` (
   `password` varchar(255),
   `email_verified_at` timestamp,
   `remember_token` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
-CREATE TABLE `roles` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255),
-  `guard_name` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
-);
-
-CREATE TABLE `model_has_roles` (
-  `role_id` int,
-  `model_type` varchar(255),
-  `model_id` int
+CREATE TABLE `password_resets` (
+  `email` varchar(255),
+  `token` varchar(255),
+  `created_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_provinces` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_cities` (
@@ -38,8 +30,8 @@ CREATE TABLE `ref_cities` (
   `province_id` int,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_districts` (
@@ -47,126 +39,135 @@ CREATE TABLE `ref_districts` (
   `city_id` int,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_religions` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_days` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_school_types` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_institution_types` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_academic_status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
+  `code` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
-CREATE TABLE `ref_admninistrative_status` (
+CREATE TABLE `ref_administrative_status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_functional_roles` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_grade_components` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_subject_registration_status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_presence_status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_approval_status` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_session_types` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_funding_types` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_academic_events` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `code` varchar(255) UNIQUE,
   `name` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `ref_exam_types` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
+);
+
+CREATE TABLE `ref_exit_status` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `is_active` boolean,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_academic_events` (
@@ -175,8 +176,8 @@ CREATE TABLE `master_academic_events` (
   `academic_period_id` int,
   `start_date` timestamp,
   `end_date` timestamp,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_academic_periods` (
@@ -186,8 +187,8 @@ CREATE TABLE `master_academic_periods` (
   `is_active` boolean,
   `periode` varchar(255),
   `description` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_conversion_scores` (
@@ -195,8 +196,8 @@ CREATE TABLE `master_conversion_scores` (
   `name` varchar(255),
   `assessment_weight` numeric(3,2),
   `pass_flag` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_education_programs` (
@@ -204,8 +205,8 @@ CREATE TABLE `master_education_programs` (
   `code` varchar(255) UNIQUE,
   `name` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_students` (
@@ -231,8 +232,10 @@ CREATE TABLE `master_students` (
   `mother_name` varchar(255),
   `mother_phone` varchar(255),
   `mother_sid` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_lectures` (
@@ -247,8 +250,10 @@ CREATE TABLE `master_lectures` (
   `city_id` int,
   `district_id` int,
   `postal_code` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_institutions` (
@@ -262,8 +267,8 @@ CREATE TABLE `master_institutions` (
   `head_id` int,
   `accreditation` varchar(255),
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_curriculums` (
@@ -277,8 +282,8 @@ CREATE TABLE `master_curriculums` (
   `start_date` date,
   `end_date` date,
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_subjects` (
@@ -289,8 +294,8 @@ CREATE TABLE `master_subjects` (
   `institution_id` int,
   `is_mandatory` boolean,
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `master_class` (
@@ -303,19 +308,37 @@ CREATE TABLE `master_class` (
   `short_name` varchar(255),
   `capacity` smallint,
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
+);
+
+CREATE TABLE `master_graduate_students` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `student_id` int,
+  `academic_period_id` int,
+  `status_id` int,
+  `graduation_year` smallint,
+  `diploma_number` varchar(255),
+  `pin` varchar(255),
+  `sk_number` varchar(255),
+  `sk_date` date,
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_student_institutions` (
   `student_id` int,
   `institution_id` int,
   `code` varchar(255) UNIQUE,
-  `enrollment_year` smallint,
-  `graduation_year` smallint,
-  `diploma_number` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp(),
+  `entry_year` smallint,
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now()),
   PRIMARY KEY (`student_id`, `institution_id`)
 );
 
@@ -327,8 +350,8 @@ CREATE TABLE `tran_lecture_educations` (
   `enrollment_year` smallint,
   `diploma_number` varchar(255),
   `graduation_document` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_lecture_institutions` (
@@ -339,8 +362,8 @@ CREATE TABLE `tran_lecture_institutions` (
   `functional_role_id` int,
   `start_date` date,
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp(),
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now()),
   PRIMARY KEY (`lecutre_id`, `institution_id`)
 );
 
@@ -348,8 +371,10 @@ CREATE TABLE `tran_subject_curriculums` (
   `subject_id` int,
   `curriculum_id` int,
   `semester` smallint,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp(),
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now()),
   PRIMARY KEY (`subject_id`, `curriculum_id`)
 );
 
@@ -364,8 +389,8 @@ CREATE TABLE `tran_academic_records` (
   `semester_gpa` numeric(3,2),
   `tuition_fee` double,
   `funding_type_id` int,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_lecture_class` (
@@ -374,8 +399,8 @@ CREATE TABLE `tran_lecture_class` (
   `class_id` int,
   `is_main_lecture` boolean,
   `credit` double,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_schedules` (
@@ -385,8 +410,8 @@ CREATE TABLE `tran_schedules` (
   `start` time,
   `finish` time,
   `room` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_grade_components` (
@@ -395,8 +420,8 @@ CREATE TABLE `tran_grade_components` (
   `grade_component_id` int,
   `grade_weight` numeric(5,2),
   `grade_max` numeric(5,2),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_student_subject_plans` (
@@ -405,8 +430,10 @@ CREATE TABLE `tran_student_subject_plans` (
   `status_id` int,
   `raw_score` numeric(5,2),
   `letter_grade` varchar(255),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp(),
+  `created_by` int,
+  `updated_by` int,
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now()),
   PRIMARY KEY (`academic_record_id`, `class_id`)
 );
 
@@ -420,8 +447,8 @@ CREATE TABLE `tran_session_class` (
   `news` text,
   `discussion` text,
   `session_type_id` int,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_student_presences` (
@@ -430,8 +457,8 @@ CREATE TABLE `tran_student_presences` (
   `academic_record_id` int,
   `presence_status_id` int,
   `checkin` timestamp,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_student_grades` (
@@ -439,8 +466,8 @@ CREATE TABLE `tran_student_grades` (
   `class_component_id` int,
   `academic_record_id` int,
   `raw_score` numeric(5,2),
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_payment_histories` (
@@ -457,8 +484,8 @@ CREATE TABLE `tran_payment_histories` (
   `payment_amount` double,
   `datetime_paid` timestamp,
   `is_installment` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_installment_requests` (
@@ -467,8 +494,8 @@ CREATE TABLE `tran_installment_requests` (
   `academic_record_id` int,
   `description` longtext,
   `status` int,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_detail_installments` (
@@ -481,8 +508,8 @@ CREATE TABLE `tran_detail_installments` (
   `payment_amount` double,
   `datetime_paid` timestamp,
   `is_active` boolean,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `tran_exam_schedules` (
@@ -494,8 +521,8 @@ CREATE TABLE `tran_exam_schedules` (
   `finish` time,
   `room` varchar(255),
   `news` text,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `log_installment_approvals` (
@@ -503,8 +530,8 @@ CREATE TABLE `log_installment_approvals` (
   `installment_request_id` int,
   `approver_id` int,
   `status` int,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `log_study_plan_approvals` (
@@ -513,69 +540,65 @@ CREATE TABLE `log_study_plan_approvals` (
   `class_id` int,
   `approver_id` int,
   `status` int,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_students` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `student_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_institutions` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `institution_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_lectures` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `lecture_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_lecture_class` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `pddikti_lecture_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_curriculums` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `curriculum_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_subjects` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `subject_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
 
 CREATE TABLE `pddikti_class` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `class_id` int,
   `pddikti_code` varchar(255) UNIQUE,
-  `created_at` timestamp DEFAULT current_timestamp(),
-  `updated_at` timestamp DEFAULT current_timestamp()
+  `created_at` timestamp DEFAULT (now()),
+  `updated_at` timestamp DEFAULT (now())
 );
-
-ALTER TABLE `model_has_roles` ADD FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
-ALTER TABLE `model_has_roles` ADD FOREIGN KEY (`model_id`) REFERENCES `users` (`id`);
 
 ALTER TABLE `ref_cities` ADD FOREIGN KEY (`province_id`) REFERENCES `ref_provinces` (`id`);
 
@@ -593,11 +616,19 @@ ALTER TABLE `master_students` ADD FOREIGN KEY (`district_id`) REFERENCES `ref_di
 
 ALTER TABLE `master_students` ADD FOREIGN KEY (`school_type_id`) REFERENCES `ref_school_types` (`id`);
 
+ALTER TABLE `master_students` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_students` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
 ALTER TABLE `master_lectures` ADD FOREIGN KEY (`province_id`) REFERENCES `ref_provinces` (`id`);
 
 ALTER TABLE `master_lectures` ADD FOREIGN KEY (`city_id`) REFERENCES `ref_cities` (`id`);
 
 ALTER TABLE `master_lectures` ADD FOREIGN KEY (`district_id`) REFERENCES `ref_districts` (`id`);
+
+ALTER TABLE `master_lectures` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_lectures` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 ALTER TABLE `master_institutions` ADD FOREIGN KEY (`education_program_id`) REFERENCES `master_education_programs` (`id`);
 
@@ -613,17 +644,34 @@ ALTER TABLE `master_subjects` ADD FOREIGN KEY (`institution_id`) REFERENCES `mas
 
 ALTER TABLE `master_class` ADD FOREIGN KEY (`subject_curriculum_id`) REFERENCES `tran_subject_curriculums` (`subject_id`);
 
-ALTER TABLE `tran_subject_curriculums` ADD INDEX(`curriculum_id`);
-
+ALTER TABLE tran_subject_curriculums ADD INDEX idx_curriculum_id (curriculum_id);
 ALTER TABLE `master_class` ADD FOREIGN KEY (`curriculum_id`) REFERENCES `tran_subject_curriculums` (`curriculum_id`);
 
 ALTER TABLE `master_class` ADD FOREIGN KEY (`academic_period_id`) REFERENCES `master_academic_periods` (`id`);
 
 ALTER TABLE `master_class` ADD FOREIGN KEY (`institution_id`) REFERENCES `master_institutions` (`id`);
 
+ALTER TABLE `master_class` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_class` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`student_id`) REFERENCES `master_students` (`id`);
+
+ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`academic_period_id`) REFERENCES `master_academic_periods` (`id`);
+
+ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`status_id`) REFERENCES `ref_exit_status` (`id`);
+
+ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
 ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`student_id`) REFERENCES `master_students` (`id`);
 
 ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`institution_id`) REFERENCES `master_institutions` (`id`);
+
+ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 ALTER TABLE `tran_lecture_educations` ADD FOREIGN KEY (`lecutre_id`) REFERENCES `master_lectures` (`id`);
 
@@ -639,6 +687,10 @@ ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`subject_id`) REFERENCES
 
 ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`curriculum_id`) REFERENCES `master_curriculums` (`id`);
 
+ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`student_id`) REFERENCES `tran_student_institutions` (`student_id`);
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`institution_id`) REFERENCES `tran_student_institutions` (`institution_id`);
@@ -647,7 +699,7 @@ ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`academic_period_id`) REFER
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`academic_status_id`) REFERENCES `ref_academic_status` (`id`);
 
-ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`administrative_status_id`) REFERENCES `ref_admninistrative_status` (`id`);
+ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`administrative_status_id`) REFERENCES `ref_administrative_status` (`id`);
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`funding_type_id`) REFERENCES `ref_funding_types` (`id`);
 
@@ -668,6 +720,10 @@ ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`academic_record_id`) 
 ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`class_id`) REFERENCES `master_class` (`id`);
 
 ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`status_id`) REFERENCES `ref_subject_registration_status` (`id`);
+
+ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 ALTER TABLE `tran_session_class` ADD FOREIGN KEY (`class_id`) REFERENCES `master_class` (`id`);
 
