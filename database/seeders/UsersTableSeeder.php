@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\User;
+use App\Models\RoleMember;
 
 class UsersTableSeeder extends Seeder
 {

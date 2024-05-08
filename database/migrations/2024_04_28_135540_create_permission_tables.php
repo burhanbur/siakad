@@ -92,7 +92,7 @@ return new class extends Migration
                 $table->primary([$columnNames['team_foreign_key'], $pivotRole, $columnNames['model_morph_key'], 'model_type'],
                     'model_has_roles_role_model_type_primary');
             } else {
-                $table->primary([$pivotRole, $columnNames['model_morph_key'], 'model_type'],
+                $table->primary([$pivotRole, $columnNames['model_morph_key'], 'model_type', 'institution_id'],
                     'model_has_roles_role_model_type_primary');
             }
         });

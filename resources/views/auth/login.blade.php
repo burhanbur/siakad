@@ -52,7 +52,7 @@
                     @endif
                     
                     <div class="wrap-input100" data-validate="Email or Username is required">
-                        <input class="input100" type="text" name="email" value="{{ old('email') }}" required>
+                        <input class="input100" type="text" name="username" value="{{ old('username') }}" required>
                         <span class="focus-input100"></span>
                         <span class="label-input100">Username atau Email</span>
                     </div>                  

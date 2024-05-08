@@ -19,8 +19,6 @@ class DatabaseSeeder extends Seeder
 
         try {
             $this->call([
-                RolesTableSeeder::class,
-                UsersTableSeeder::class,
                 RefReligionsTableSeeder::class,
                 RefPresenceStatusTableSeeder::class,
                 RefSessionTypesTableSeeder::class,
@@ -36,6 +34,10 @@ class DatabaseSeeder extends Seeder
                 RefAdministrativeStatusTableSeeder::class,
                 RefExitStatusTableSeeder::class,
                 RefAcademicEventsTableSeeder::class,
+                MasterEducationProgram::class,
+                MasterInstitutionsTableSeeder::class,
+                RolesTableSeeder::class,
+                UsersTableSeeder::class,
             ]);
 
             DB::commit();
