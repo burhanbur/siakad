@@ -31,9 +31,6 @@ class MasterAcademicPeriodsTableSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
-        ];
-
-        $data = [
             [
                 'id' => 2,
                 'year' => 2024,

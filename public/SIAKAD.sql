@@ -382,12 +382,11 @@ CREATE TABLE `tran_subject_curriculums` (
 CREATE TABLE `tran_academic_records` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `student_id` int,
-  `institution_id` int,
   `academic_period_id` int,
   `academic_status_id` int,
   `administrative_status_id` int,
-  `cumulative_gpa` numeric(3,2),
-  `semester_gpa` numeric(3,2),
+  `cumulative_gpa` double,
+  `semester_gpa` double,
   `tuition_fee` double,
   `funding_type_id` int,
   `created_at` timestamp DEFAULT (now()),
@@ -696,8 +695,6 @@ ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`created_by`) REFERENCES
 ALTER TABLE `tran_subject_curriculums` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`student_id`) REFERENCES `tran_student_institutions` (`student_id`);
-
-ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`institution_id`) REFERENCES `tran_student_institutions` (`institution_id`);
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`academic_period_id`) REFERENCES `master_academic_periods` (`id`);
 
