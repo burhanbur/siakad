@@ -34,8 +34,12 @@ class DatabaseSeeder extends Seeder
                 RefAdministrativeStatusTableSeeder::class,
                 RefExitStatusTableSeeder::class,
                 RefAcademicEventsTableSeeder::class,
-                MasterEducationProgram::class,
+                MasterEducationProgramsTableSeeder::class,
                 MasterInstitutionsTableSeeder::class,
+                MasterSubjectsTableSeeder::class,
+                MasterAcademicPeriodsTableSeeder::class,
+                MasterAcademicEventsTableSeeder::class,
+                MasterConversionScoresTableSeeder::class,
                 RolesTableSeeder::class,
                 UsersTableSeeder::class,
             ]);

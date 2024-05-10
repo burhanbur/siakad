@@ -193,9 +193,10 @@ CREATE TABLE `master_academic_periods` (
 
 CREATE TABLE `master_conversion_scores` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255),
-  `assessment_weight` numeric(3,2),
-  `pass_flag` boolean,
+  `subject_id` int,
+  `letter` varchar(255),
+  `lower_limit` numeric(3,2),
+  `upper_limit` numeric(3,2),
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now())
 );
@@ -644,7 +645,8 @@ ALTER TABLE `master_subjects` ADD FOREIGN KEY (`institution_id`) REFERENCES `mas
 
 ALTER TABLE `master_class` ADD FOREIGN KEY (`subject_curriculum_id`) REFERENCES `tran_subject_curriculums` (`subject_id`);
 
-ALTER TABLE tran_subject_curriculums ADD INDEX idx_curriculum_id (curriculum_id);
+ALTER TABLE `tran_subject_curriculums` ADD INDEX idx_curriculum_id (`curriculum_id`);
+
 ALTER TABLE `master_class` ADD FOREIGN KEY (`curriculum_id`) REFERENCES `tran_subject_curriculums` (`curriculum_id`);
 
 ALTER TABLE `master_class` ADD FOREIGN KEY (`academic_period_id`) REFERENCES `master_academic_periods` (`id`);
@@ -664,6 +666,8 @@ ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`status_id`) REFERENCES 
 ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
 
 ALTER TABLE `master_graduate_students` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
+
+ALTER TABLE `master_conversion_scores` ADD FOREIGN KEY (`subject_id`) REFERENCES `master_subjects` (`id`);
 
 ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`student_id`) REFERENCES `master_students` (`id`);
 

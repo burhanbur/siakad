@@ -30,7 +30,12 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => $now,
         ]);
 
-        $admin->assignRole('admin');
+        $adminRole = RoleMember::create([
+            'role_id' => 1,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 1,
+            'model_id' => $admin->id,
+        ]);
 
         $academic = User::create([
             'uuid' => (string) Str::orderedUuid(),
@@ -41,7 +46,12 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => $now,
         ]);
 
-        $academic->assignRole('academic');
+        $academicRole = RoleMember::create([
+            'role_id' => 2,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 1,
+            'model_id' => $academic->id,
+        ]);
 
         $finance = User::create([
             'uuid' => (string) Str::orderedUuid(),
@@ -50,6 +60,13 @@ class UsersTableSeeder extends Seeder
             'email' => 'keuangan@siakad.com',
             'password' => Hash::make('keuangan'),
             'email_verified_at' => $now,
+        ]);
+
+        $financeRole = RoleMember::create([
+            'role_id' => 5,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 1,
+            'model_id' => $finance->id,
         ]);
 
         $finance->assignRole('finance');
@@ -63,7 +80,12 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => $now,
         ]);
 
-        $lecture->assignRole('lecture');
+        $lectureRole = RoleMember::create([
+            'role_id' => 4,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 1,
+            'model_id' => $lecture->id,
+        ]);
 
         $pddikti = User::create([
             'uuid' => (string) Str::orderedUuid(),
@@ -74,7 +96,12 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => $now,
         ]);
 
-        $pddikti->assignRole('pddikti');
+        $pddiktiRole = RoleMember::create([
+            'role_id' => 10,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 1,
+            'model_id' => $pddikti->id,
+        ]);
 
         $student = User::create([
             'uuid' => (string) Str::orderedUuid(),
@@ -85,6 +112,11 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => $now,
         ]);
 
-        $student->assignRole('student');
+        $studentRole = RoleMember::create([
+            'role_id' => 3,
+            'model_type' => 'App\Models\User',
+            'institution_id' => 3,
+            'model_id' => $student->id,
+        ]);
     }
 }

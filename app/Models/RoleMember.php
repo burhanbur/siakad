@@ -22,6 +22,7 @@ class RoleMember extends MultiplePrimaryKey
     ];    
     
     public $incrementing = false;
+    public $timestamps = false;
 
     public function role()
     {

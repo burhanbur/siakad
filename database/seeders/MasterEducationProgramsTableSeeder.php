@@ -46,7 +46,7 @@ class MasterEducationProgramsTableSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 3,
+                'id' => 4,
                 'code' => 'D4',
                 'name' => 'Diploma 4',
                 'is_active' => 1,
@@ -54,7 +54,7 @@ class MasterEducationProgramsTableSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 4,
+                'id' => 5,
                 'code' => 'S1',
                 'name' => 'Sarjana',
                 'is_active' => 1,
@@ -62,7 +62,7 @@ class MasterEducationProgramsTableSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 5,
+                'id' => 6,
                 'code' => 'S2',
                 'name' => 'Master',
                 'is_active' => 1,
@@ -70,7 +70,7 @@ class MasterEducationProgramsTableSeeder extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'id' => 6,
+                'id' => 7,
                 'code' => 'S3',
                 'name' => 'Doktor',
                 'is_active' => 1,
