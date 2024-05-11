@@ -147,44 +147,31 @@
 				<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 					<div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 						<ul class="kt-menu__nav ">
-							<li class="kt-menu__item  @if(\Request::segment(2) == '' || \Request::segment(2) == 'home') kt-menu__item--active @endif" aria-haspopup="true">
-								<a href="{{ route('admin.home') }}" class="kt-menu__link ">
-									<i class="kt-menu__link-icon flaticon2-dashboard"></i>
-									<span class="kt-menu__link-text">Dashboard</span>
-								</a>
-							</li>
 
-							<li class="kt-menu__item  @if(\Request::segment(2) == 'users') kt-menu__item--active @endif" aria-haspopup="true">
-								<a href="" class="kt-menu__link ">
-									<i class="kt-menu__link-icon flaticon2-user"></i>
-									<span class="kt-menu__link-text">Pengguna</span>
-								</a>
-							</li>
+							@if (\Auth::user()->hasRole('academic'))
+								@include('layouts.sidebar.academic')
+							@endif
 
-							<li class="kt-menu__item @if(\Request::segment(2) == 'laporan') kt-menu__item--open kt-menu__item--here @endif kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">								
-								<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-									<i class="kt-menu__link-icon flaticon2-document"></i>
-									<span class="kt-menu__link-text">Laporan</span>
-									<i class="kt-menu__ver-arrow la la-angle-right"></i>
-								</a>
+							@if (\Auth::user()->hasRole('admin'))
+								@include('layouts.sidebar.admin')
+							@endif
+							
+							@if (\Auth::user()->hasRole('finance'))
+								@include('layouts.sidebar.finance')
+							@endif
+							
+							@if (\Auth::user()->hasRole('lecture'))
+								@include('layouts.sidebar.lecture')
+							@endif
+							
+							@if (\Auth::user()->hasRole('pddikti'))
+								@include('layouts.sidebar.pddikti')
+							@endif
+							
+							@if (\Auth::user()->hasRole('student'))
+								@include('layouts.sidebar.student')
+							@endif
 
-								<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-									<ul class="kt-menu__subnav">
-										<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
-											<span class="kt-menu__link">
-												<span class="kt-menu__link-text">Laporan</span>
-											</span>
-										</li>
-
-										<li class="kt-menu__item @if(\Request::segment(2) == 'laporan' && \Request::segment(3) == 'camaba') kt-menu__item--active @endif" aria-haspopup="true">
-											<a href="" class="kt-menu__link ">
-												<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i>
-												<span class="kt-menu__link-text">Calon Mahasiswa Baru</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</li>
 						</ul>
 					</div>
 				</div>
@@ -220,30 +207,31 @@
 					<div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
 						<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
 							<ul class="kt-menu__nav ">
-								<li class="kt-menu__item  @if(\Request::segment(2) == '' || \Request::segment(2) == 'home') kt-menu__item--active  @endif" aria-haspopup="true">
-									<a href="{{ route('admin.home') }}" class="kt-menu__link ">
-										<span class="kt-menu__link-icon">
-											<i class="flaticon2-dashboard"></i>
-										</span>
-										<span class="kt-menu__link-text">Dashboard</span>
-									</a>
-								</li>
 								
-								<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="click" aria-haspopup="true">
-									<a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-										<span class="kt-menu__link-icon">
-											<i class="flaticon2-settings"></i>
-										</span>
-										<span class="kt-menu__link-text">Konfigurasi</span>
-										<i class="kt-menu__hor-arrow la la-angle-down"></i>
-										<i class="kt-menu__ver-arrow la la-angle-right"></i>
-									</a>
-									<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item " aria-haspopup="true"><a href="" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Jalur Masuk</span></a></li>
-										</ul>
-									</div>
-								</li>
+								@if (\Auth::user()->hasRole('academic'))
+									@include('layouts.topbar.academic')
+								@endif
+
+								@if (\Auth::user()->hasRole('admin'))
+									@include('layouts.topbar.admin')
+								@endif
+								
+								@if (\Auth::user()->hasRole('finance'))
+									@include('layouts.topbar.finance')
+								@endif
+								
+								@if (\Auth::user()->hasRole('lecture'))
+									@include('layouts.topbar.lecture')
+								@endif
+								
+								@if (\Auth::user()->hasRole('pddikti'))
+									@include('layouts.topbar.pddikti')
+								@endif
+								
+								@if (\Auth::user()->hasRole('student'))
+									@include('layouts.topbar.student')
+								@endif
+
 							</ul>
 						</div>
 					</div>

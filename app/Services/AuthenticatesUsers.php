@@ -67,6 +67,8 @@ trait AuthenticatesUsers
             return $this->sendLoginResponse($request);
         }
 
+        Session::flash('notification', ['level' => 'error', 'message' => 'Username atau kata sandi yang Anda masukan salah']);
+
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
@@ -152,7 +154,36 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        // TODO: cek role_id dan institution_id kemudian redirect ke halaman sesuai dengan rolenya
+        $academic = $user->hasRole('academic');
+        $admin = $user->hasRole('admin');
+        $finance = $user->hasRole('finance');
+        $lecture = $user->hasRole('lecture');
+        $pddikti = $user->hasRole('pddikti');
+        $student = $user->hasRole('student');
+
+        if ($academic) {
+            return redirect()->route('academic.home');
+        }
+
+        if ($admin) {
+            return redirect()->route('admin.home');
+        }
+
+        if ($finance) {
+            return redirect()->route('finance.home');
+        }
+
+        if ($lecture) {
+            return redirect()->route('lecture.home');
+        }
+
+        if ($pddikti) {
+            return redirect()->route('pddikti.home');
+        }
+
+        if ($student) {
+            return redirect()->route('student.home');
+        }
     }
 
     /**

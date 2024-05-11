@@ -23,6 +23,38 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $academic = $user->hasRole('academic');
+        $admin = $user->hasRole('admin');
+        $finance = $user->hasRole('finance');
+        $lecture = $user->hasRole('lecture');
+        $pddikti = $user->hasRole('pddikti');
+        $student = $user->hasRole('student');
+
+        if ($academic) {
+            return redirect()->route('academic.home');
+        }
+
+        if ($admin) {
+            return redirect()->route('admin.home');
+        }
+
+        if ($finance) {
+            return redirect()->route('finance.home');
+        }
+
+        if ($lecture) {
+            return redirect()->route('lecture.home');
+        }
+
+        if ($pddikti) {
+            return redirect()->route('pddikti.home');
+        }
+
+        if ($student) {
+            return redirect()->route('student.home');
+        }
+        
         return view('home');
     }
 }

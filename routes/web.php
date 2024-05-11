@@ -93,31 +93,62 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function() {
         Route::get('home', [AdminHomeController::class, 'index'])->name('home');
 
         Route::group(['prefix' => 'education', 'as' => 'education.'], function() {
-
+            Route::get('index', [AdminEducationController::class, 'index'])->name('index');
+            Route::get('show/{id}', [AdminEducationController::class, 'show'])->name('show');
+            Route::get('edit/{id}', [AdminEducationController::class, 'edit'])->name('edit');
+            Route::get('create', [AdminEducationController::class, 'create'])->name('create');
+            Route::get('store', [AdminEducationController::class, 'store'])->name('store');
+            Route::get('update/{id}', [AdminEducationController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [AdminEducationController::class, 'delete'])->name('delete');
         });
 
         Route::group(['prefix' => 'event', 'as' => 'event.'], function() {
-
+            Route::get('index', [AdminEventController::class, 'index'])->name('index');
+            Route::get('show/{id}', [AdminEventController::class, 'show'])->name('show');
+            Route::get('edit/{id}', [AdminEventController::class, 'edit'])->name('edit');
+            Route::get('create', [AdminEventController::class, 'create'])->name('create');
+            Route::get('store', [AdminEventController::class, 'store'])->name('store');
+            Route::get('update/{id}', [AdminEventController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [AdminEventController::class, 'delete'])->name('delete');
         });
 
         Route::group(['prefix' => 'institution', 'as' => 'institution.'], function() {
-
+            Route::get('index', [AdminInstitutionController::class, 'index'])->name('index');
+            Route::get('show/{id}', [AdminInstitutionController::class, 'show'])->name('show');
+            Route::get('edit/{id}', [AdminInstitutionController::class, 'edit'])->name('edit');
+            Route::get('create', [AdminInstitutionController::class, 'create'])->name('create');
+            Route::get('store', [AdminInstitutionController::class, 'store'])->name('store');
+            Route::get('update/{id}', [AdminInstitutionController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [AdminInstitutionController::class, 'delete'])->name('delete');
         });
 
         Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
+            Route::get('index', [AdminLectureController::class, 'index'])->name('index');
 
         });
 
         Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
+            Route::get('index', [AdminStudentController::class, 'index'])->name('index');
 
         });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
+            Route::get('index', [AdminUserController::class, 'index'])->name('index');
+            Route::get('show/{id}', [AdminUserController::class, 'show'])->name('show');
+            Route::get('edit/{id}', [AdminUserController::class, 'edit'])->name('edit');
+            Route::get('create', [AdminUserController::class, 'create'])->name('create');
+            Route::get('store', [AdminUserController::class, 'store'])->name('store');
+            Route::get('update/{id}', [AdminUserController::class, 'update'])->name('update');
+            Route::get('delete/{id}', [AdminUserController::class, 'delete'])->name('delete');
 
+            Route::group(['prefix' => 'password', 'as' => 'password.'], function() {
+                Route::get('change', [AdminUserController::class, 'changePassword'])->name('change');
+                Route::put('update/{id}', [AdminUserController::class, 'updatePassword'])->name('update');
+            });
         });
     });
 
