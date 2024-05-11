@@ -42,6 +42,8 @@ class DatabaseSeeder extends Seeder
                 MasterConversionScoresTableSeeder::class,
                 RolesTableSeeder::class,
                 UsersTableSeeder::class,
+                MasterLecturesTableSeeder::class,
+                MasterStudentsTableSeeder::class,
             ]);
 
             DB::commit();

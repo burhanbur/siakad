@@ -28,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@siakad.com',
             'password' => Hash::make('admin'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $adminRole = RoleMember::create([
@@ -44,6 +45,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'akademik@siakad.com',
             'password' => Hash::make('akademik'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $academicRole = RoleMember::create([
@@ -60,6 +62,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'keuangan@siakad.com',
             'password' => Hash::make('keuangan'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $financeRole = RoleMember::create([
@@ -78,6 +81,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'dosen@siakad.com',
             'password' => Hash::make('dosen'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $lectureRole = RoleMember::create([
@@ -94,6 +98,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'pddikti@siakad.com',
             'password' => Hash::make('pddikti'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $pddiktiRole = RoleMember::create([
@@ -110,6 +115,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'mahasiswa@siakad.com',
             'password' => Hash::make('mahasiswa'),
             'email_verified_at' => $now,
+            'is_active' => true,
         ]);
 
         $studentRole = RoleMember::create([

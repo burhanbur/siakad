@@ -7,6 +7,7 @@ CREATE TABLE `users` (
   `password` varchar(255),
   `email_verified_at` timestamp,
   `remember_token` varchar(255),
+  `is_active` boolean,
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now())
 );
@@ -195,8 +196,8 @@ CREATE TABLE `master_conversion_scores` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `subject_id` int,
   `letter` varchar(255),
-  `lower_limit` numeric(3,2),
-  `upper_limit` numeric(3,2),
+  `lower_limit` double,
+  `upper_limit` double,
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now())
 );
@@ -345,7 +346,7 @@ CREATE TABLE `tran_student_institutions` (
 
 CREATE TABLE `tran_lecture_educations` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `lecutre_id` int,
+  `lecture_id` int,
   `education_program_id` int,
   `institution_name` varchar(255),
   `enrollment_year` smallint,
@@ -356,7 +357,7 @@ CREATE TABLE `tran_lecture_educations` (
 );
 
 CREATE TABLE `tran_lecture_institutions` (
-  `lecutre_id` int,
+  `lecture_id` int,
   `institution_id` int,
   `code` varchar(255) UNIQUE,
   `code_national` varchar(255) UNIQUE,
@@ -365,7 +366,7 @@ CREATE TABLE `tran_lecture_institutions` (
   `is_active` boolean,
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now()),
-  PRIMARY KEY (`lecutre_id`, `institution_id`)
+  PRIMARY KEY (`lecture_id`, `institution_id`)
 );
 
 CREATE TABLE `tran_subject_curriculums` (
@@ -395,7 +396,7 @@ CREATE TABLE `tran_academic_records` (
 
 CREATE TABLE `tran_lecture_class` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `lecutre_id` int,
+  `lecture_id` int,
   `class_id` int,
   `is_main_lecture` boolean,
   `credit` double,
@@ -418,8 +419,8 @@ CREATE TABLE `tran_grade_components` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `class_id` int,
   `grade_component_id` int,
-  `grade_weight` numeric(5,2),
-  `grade_max` numeric(5,2),
+  `grade_weight` double,
+  `grade_max` double,
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now())
 );
@@ -428,7 +429,7 @@ CREATE TABLE `tran_student_subject_plans` (
   `academic_record_id` int,
   `class_id` int,
   `status_id` int,
-  `raw_score` numeric(5,2),
+  `raw_score` double,
   `letter_grade` varchar(255),
   `created_by` int,
   `updated_by` int,
@@ -443,7 +444,7 @@ CREATE TABLE `tran_session_class` (
   `class_date` date,
   `start` time,
   `finish` time,
-  `lecutre_id` int,
+  `lecture_id` int,
   `news` text,
   `discussion` text,
   `session_type_id` int,
@@ -465,7 +466,7 @@ CREATE TABLE `tran_student_grades` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `class_component_id` int,
   `academic_record_id` int,
-  `raw_score` numeric(5,2),
+  `raw_score` double,
   `created_at` timestamp DEFAULT (now()),
   `updated_at` timestamp DEFAULT (now())
 );
@@ -676,11 +677,11 @@ ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`created_by`) REFERENCE
 
 ALTER TABLE `tran_student_institutions` ADD FOREIGN KEY (`updated_by`) REFERENCES `users` (`id`);
 
-ALTER TABLE `tran_lecture_educations` ADD FOREIGN KEY (`lecutre_id`) REFERENCES `master_lectures` (`id`);
+ALTER TABLE `tran_lecture_educations` ADD FOREIGN KEY (`lecture_id`) REFERENCES `master_lectures` (`id`);
 
 ALTER TABLE `tran_lecture_educations` ADD FOREIGN KEY (`education_program_id`) REFERENCES `master_education_programs` (`id`);
 
-ALTER TABLE `tran_lecture_institutions` ADD FOREIGN KEY (`lecutre_id`) REFERENCES `master_lectures` (`id`);
+ALTER TABLE `tran_lecture_institutions` ADD FOREIGN KEY (`lecture_id`) REFERENCES `master_lectures` (`id`);
 
 ALTER TABLE `tran_lecture_institutions` ADD FOREIGN KEY (`institution_id`) REFERENCES `master_institutions` (`id`);
 
@@ -704,7 +705,7 @@ ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`administrative_status_id`)
 
 ALTER TABLE `tran_academic_records` ADD FOREIGN KEY (`funding_type_id`) REFERENCES `ref_funding_types` (`id`);
 
-ALTER TABLE `tran_lecture_class` ADD FOREIGN KEY (`lecutre_id`) REFERENCES `master_lectures` (`id`);
+ALTER TABLE `tran_lecture_class` ADD FOREIGN KEY (`lecture_id`) REFERENCES `master_lectures` (`id`);
 
 ALTER TABLE `tran_lecture_class` ADD FOREIGN KEY (`class_id`) REFERENCES `master_class` (`id`);
 
@@ -728,7 +729,7 @@ ALTER TABLE `tran_student_subject_plans` ADD FOREIGN KEY (`updated_by`) REFERENC
 
 ALTER TABLE `tran_session_class` ADD FOREIGN KEY (`class_id`) REFERENCES `master_class` (`id`);
 
-ALTER TABLE `tran_session_class` ADD FOREIGN KEY (`lecutre_id`) REFERENCES `master_lectures` (`id`);
+ALTER TABLE `tran_session_class` ADD FOREIGN KEY (`lecture_id`) REFERENCES `master_lectures` (`id`);
 
 ALTER TABLE `tran_session_class` ADD FOREIGN KEY (`session_type_id`) REFERENCES `ref_session_types` (`id`);
 
