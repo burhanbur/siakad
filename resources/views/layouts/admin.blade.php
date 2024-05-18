@@ -54,6 +54,12 @@
 	<link href="{{ asset('assets/back/css/demo1/skins/aside/light.min.css') }}" rel="stylesheet" type="text/css" />
 	<!--begin::Page Custom Styles(used by this page) -->
 	<style>
+		.btn-xs {
+            padding: 0.25rem 0.5rem; /* Ubah padding sesuai kebutuhan */
+            font-size: 0.75rem; /* Ubah ukuran font sesuai kebutuhan */
+            line-height: 1.5;
+            border-radius: 0.2rem; /* Ubah radius sesuai kebutuhan */
+        }
 		@media (max-width: 1024px){
 			.kt-header-mobile--fixed .kt-wrapper {
 				padding-top: 75px;

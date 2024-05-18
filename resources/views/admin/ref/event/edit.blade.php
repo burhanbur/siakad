@@ -1,5 +1,5 @@
 @section('content')
-<form method="POST" action="{{ route('admin.education.update', ['id' => $data->id]) }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.ref.event.update', ['id' => $data->id]) }}" enctype="multipart/form-data">
 @csrf
 @method('PUT')
 	<div class="modal-body">
@@ -8,17 +8,9 @@
 			<input type="text" class="form-control" name="code" required value="{{ $data->code }}">
 		</div>
 
-		<label>Program Pendidikan <b class="text-danger">*</b></label>
+		<label>Kegiatan Akademik <b class="text-danger">*</b></label>
 		<div class="form-group">
 			<input type="text" class="form-control" name="name" required value="{{ $data->name }}">
-		</div>
-
-		<label>Status Aktif <b class="text-danger">*</b></label>
-		<div class="form-group">
-			<select name="is_active" class="form-control">
-				<option @if ($data->is_active) selected @endif value="1">Aktif</option>
-				<option @if (!$data->is_active) selected @endif value="0">Tidak Aktif</option>
-			</select>
 		</div>
 	</div>
 

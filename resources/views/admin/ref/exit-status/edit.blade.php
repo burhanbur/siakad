@@ -1,25 +1,21 @@
 @section('content')
-<form method="POST" action="{{ route('admin.education.update', ['id' => $data->id]) }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.ref.exit-status.update', ['id' => $data->id]) }}" enctype="multipart/form-data">
 @csrf
 @method('PUT')
 	<div class="modal-body">
-		<label>Kode <b class="text-danger">*</b></label>
-		<div class="form-group">
-			<input type="text" class="form-control" name="code" required value="{{ $data->code }}">
-		</div>
-
-		<label>Program Pendidikan <b class="text-danger">*</b></label>
+		<label>Status Keluar <b class="text-danger">*</b></label>
 		<div class="form-group">
 			<input type="text" class="form-control" name="name" required value="{{ $data->name }}">
 		</div>
 
-		<label>Status Aktif <b class="text-danger">*</b></label>
+		<!-- <label>Status Aktif</label>
 		<div class="form-group">
 			<select name="is_active" class="form-control">
+				<option value="">Pilih Status</option>
 				<option @if ($data->is_active) selected @endif value="1">Aktif</option>
 				<option @if (!$data->is_active) selected @endif value="0">Tidak Aktif</option>
 			</select>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="modal-footer">

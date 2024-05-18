@@ -89,7 +89,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Institusi</li>
+                    <li class="breadcrumb-item">Konfigurasi</li>
+                    <li class="breadcrumb-item active" aria-current="page">Kegiatan Akademik</li>
                 </ol>
             </nav>
         </div>
@@ -98,15 +99,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="kt-portlet">
+                
+
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-                            <i class="fas fa-university"></i> Institusi
+                            <i class="fas fa-university"></i> Kegiatan Akademik
                         </h3>
                     </div>
 
                     <div style="text-align: right; padding-top: 0.5%;">
-                        <a href="javascript:void(0)" value="{{ route('admin.institution.create') }}" class="btn btn-success modalShow" title="Tambah Data" data-toggle="modal" data-target="#modalShow"><i class="fa fa-plus-circle"></i> Tambah Institusi</a>
+                        <a href="javascript:void(0)" value="{{ route('admin.ref.event.create') }}" class="btn btn-success modalShow" title="Tambah Data" data-toggle="modal" data-target="#modalShow"><i class="fa fa-plus-circle"></i> Tambah Kegiatan Akademik</a>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
@@ -116,11 +119,7 @@
                                 <tr>
                                     <th class="text-center" width="50px">No</th>
                                     <th class="text-center">Kode</th>
-                                    <th class="text-center">Institusi</th>
-                                    <th class="text-center">Nama Singkat</th>
-                                    <th class="text-center">Tipe</th>
-                                    <th class="text-center">Program</th>
-                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Kegiatan</th>
                                     <th class="text-center" width="120px">#</th>
                                 </tr>
                             </thead>
@@ -134,21 +133,9 @@
                                     <td class="align-middle">
                                         {{ $item->name }}
                                     </td>
-                                    <td class="align-middle">
-                                        {{ $item->short_name }}
-                                    </td>
-                                    <td class="align-middle">
-                                        {{ $item->type->name }}
-                                    </td>
-                                    <td class="align-middle {{ (@$item->education_program_id) ?? 'text-center' }}">
-                                        {{ @$item->educationProgram->name ?? '-' }}
-                                    </td>
                                     <td class="align-middle text-center">
-                                    	<span class="btn btn-xs btn-{{ ($item->is_active) ? 'success' : 'danger' }}">{{ isActive($item->is_active) }}</span>
-                                    </td>
-                                    <td class="align-middle text-center">
-                                        <a href="javascript:void(0)" value="{{ route('admin.institution.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-icon btn-info modalShow" data-toggle="modal" title="Ubah Data" data-target="#modalShow"><i class="fa fa-edit"></i></a>
-                                        <form style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" action="{{ route('admin.institution.delete', ['id' => $item->id]) }}" method="POST">
+                                        <a href="javascript:void(0)" value="{{ route('admin.ref.event.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-icon btn-info modalShow" data-toggle="modal" title="Ubah Data" data-target="#modalShow"><i class="fa fa-edit"></i></a>
+                                        <form style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" action="{{ route('admin.ref.event.delete', ['id' => $item->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></button>                                            
@@ -159,18 +146,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="kt-portlet">
-                <div class="kt-portlet__body">
-                	<!-- TODO: buat struktur organisasi menggunakan tree js -->
-                	
                 </div>
             </div>
         </div>

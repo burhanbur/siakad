@@ -26,23 +26,16 @@
 	</a>
 </li>
 
-<li class="kt-menu__item  @if(\Request::segment(2) == 'event') kt-menu__item--active @endif" aria-haspopup="true">
-	<a href="{{ route('admin.event.index') }}" class="kt-menu__link ">
-		<i class="kt-menu__link-icon flaticon2-calendar-1"></i>
-		<span class="kt-menu__link-text">Kegiatan Akademik</span>
-	</a>
-</li>
-
 <li class="kt-menu__item  @if(\Request::segment(2) == 'education') kt-menu__item--active @endif" aria-haspopup="true">
 	<a href="{{ route('admin.education.index') }}" class="kt-menu__link ">
-		<i class="kt-menu__link-icon flaticon2-architecture-and-city"></i>
+		<i class="kt-menu__link-icon flaticon2-pie-chart-2"></i>
 		<span class="kt-menu__link-text">Program Pendidikan</span>
 	</a>
 </li>
 
 <li class="kt-menu__item  @if(\Request::segment(2) == 'institution') kt-menu__item--active @endif" aria-haspopup="true">
 	<a href="{{ route('admin.institution.index') }}" class="kt-menu__link ">
-		<i class="kt-menu__link-icon flaticon2-hexagonal"></i>
+		<i class="kt-menu__link-icon flaticon2-layers"></i>
 		<span class="kt-menu__link-text">Institusi</span>
 	</a>
 </li>
