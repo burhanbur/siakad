@@ -38,26 +38,44 @@ class EducationController extends Controller
 
     public function create(Request $request)
     {
-        return view('admin.education.create', get_defined_vars());
+        return view('admin.education.create', get_defined_vars())->renderSections()['content'];
     }
 
     public function edit($id)
     {
         $data = MasterEducationProgram::find($id);
 
-        return view('admin.education.edit', get_defined_vars());
+        return view('admin.education.edit', get_defined_vars())->renderSections()['content'];;
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        $rules = [
+            'code' => 'required|string',
+            'name' => 'required|string',
+        ];
+
+        $ruleMessages = [];
+
+        $validate = Validator::make($request->all(), $rules, $ruleMessages);
+
+        if ($validate->fails()) {
+            \Session::flash('notification', ['level' => 'error', 'message' => $validate->errors()->first()]);
+
+            return redirect()->back();
+        }
 
         DB::beginTransaction();
 
         try {
+            $data = new MasterEducationProgram;
+            $data->code = $request->code;
+            $data->name = $request->name;
+            $data->is_active = $request->is_active;
+            $data->save();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menambahkan jenjang pendidikan baru']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menambahkan jenjang pendidikan baru']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -67,15 +85,34 @@ class EducationController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $data = $request->all();
-        
+    {   
+        $rules = [
+            'code' => 'required|string',
+            'name' => 'required|string',
+        ];
+
+        $ruleMessages = [];
+
+        $validate = Validator::make($request->all(), $rules, $ruleMessages);
+
+        if ($validate->fails()) {
+            \Session::flash('notification', ['level' => 'error', 'message' => $validate->errors()->first()]);
+
+            return redirect()->back();
+        }
+
         DB::beginTransaction();
 
         try {
 
+            $data = MasterEducationProgram::find($id);
+            $data->code = $request->code;
+            $data->name = $request->name;
+            $data->is_active = $request->is_active;
+            $data->save();
+
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil mengubah jenjang pendidikan']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil mengubah jenjang pendidikan']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -89,11 +126,11 @@ class EducationController extends Controller
         DB::beginTransaction();
 
         try {
-            $data = User::find($id);
+            $data = MasterEducationProgram::find($id);
             $data->delete();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menghapus jenjang pendidikan']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menghapus jenjang pendidikan']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);

@@ -188,3 +188,16 @@ if (!function_exists('generateRandomNumber')) {
         return $randomString;
     }
 }
+
+if (!function_exists('isActive')) {
+    function isActive($status)
+    {
+        $returnValue = 'Tidak Aktif';
+
+        if ($status) {
+            $returnValue = 'Aktif';
+        }
+
+        return $returnValue;
+    }
+}

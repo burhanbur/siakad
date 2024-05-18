@@ -97,17 +97,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('home', [AdminHomeController::class, 'index'])->name('home');
 
         Route::group(['prefix' => 'education', 'as' => 'education.'], function() {
-            Route::get('index', [AdminEducationController::class, 'index'])->name('index');
+            Route::get('/', [AdminEducationController::class, 'index'])->name('index');
             Route::get('show/{id}', [AdminEducationController::class, 'show'])->name('show');
             Route::get('edit/{id}', [AdminEducationController::class, 'edit'])->name('edit');
             Route::get('create', [AdminEducationController::class, 'create'])->name('create');
-            Route::get('store', [AdminEducationController::class, 'store'])->name('store');
-            Route::get('update/{id}', [AdminEducationController::class, 'update'])->name('update');
-            Route::get('delete/{id}', [AdminEducationController::class, 'delete'])->name('delete');
+            Route::post('store', [AdminEducationController::class, 'store'])->name('store');
+            Route::put('update/{id}', [AdminEducationController::class, 'update'])->name('update');
+            Route::delete('delete/{id}', [AdminEducationController::class, 'delete'])->name('delete');
         });
 
         Route::group(['prefix' => 'event', 'as' => 'event.'], function() {
-            Route::get('index', [AdminEventController::class, 'index'])->name('index');
+            Route::get('/', [AdminEventController::class, 'index'])->name('index');
             Route::get('show/{id}', [AdminEventController::class, 'show'])->name('show');
             Route::get('edit/{id}', [AdminEventController::class, 'edit'])->name('edit');
             Route::get('create', [AdminEventController::class, 'create'])->name('create');
@@ -117,7 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['prefix' => 'institution', 'as' => 'institution.'], function() {
-            Route::get('index', [AdminInstitutionController::class, 'index'])->name('index');
+            Route::get('/', [AdminInstitutionController::class, 'index'])->name('index');
             Route::get('show/{id}', [AdminInstitutionController::class, 'show'])->name('show');
             Route::get('edit/{id}', [AdminInstitutionController::class, 'edit'])->name('edit');
             Route::get('create', [AdminInstitutionController::class, 'create'])->name('create');
@@ -127,17 +127,17 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
-            Route::get('index', [AdminLectureController::class, 'index'])->name('index');
+            Route::get('/', [AdminLectureController::class, 'index'])->name('index');
 
         });
 
         Route::group(['prefix' => 'student', 'as' => 'student.'], function() {
-            Route::get('index', [AdminStudentController::class, 'index'])->name('index');
+            Route::get('/', [AdminStudentController::class, 'index'])->name('index');
 
         });
 
         Route::group(['prefix' => 'user', 'as' => 'user.'], function() {
-            Route::get('index', [AdminUserController::class, 'index'])->name('index');
+            Route::get('/', [AdminUserController::class, 'index'])->name('index');
             Route::get('show/{id}', [AdminUserController::class, 'show'])->name('show');
             Route::get('edit/{id}', [AdminUserController::class, 'edit'])->name('edit');
             Route::get('create', [AdminUserController::class, 'create'])->name('create');

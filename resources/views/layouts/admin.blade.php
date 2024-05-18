@@ -357,6 +357,14 @@
 			@endif
 		});
 		@endif
+
+	    $('.delete-confirmation').on('click', function(e) {
+	        var confirm = confirm("Apakah Anda yakin ingin menghapus data ini?");
+
+	        if (!confirm) {
+	            e.preventDefault();
+	        }
+	    });
 	</script>
 	@yield('custom_js')
 </body>
