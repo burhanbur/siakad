@@ -88,7 +88,7 @@ class InstitutionController extends Controller
             $data->save();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menambahkan institusi baru']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menambahkan institusi baru']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -132,7 +132,7 @@ class InstitutionController extends Controller
             $data->save();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil mengubah institusi']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil mengubah institusi']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -150,7 +150,7 @@ class InstitutionController extends Controller
             $data->delete();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menghapus institusi']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menghapus institusi']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);

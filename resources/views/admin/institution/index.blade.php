@@ -5,10 +5,13 @@
 <link href="{{ asset('assets/back/vendors/general/select2/dist/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/back/vendors/general/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/back/vendors/general/flatpickr/custom-flatpickr.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/orgchart/css/jquery.orgchart.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('custom_css')
-
+<style>
+    
+</style>
 @endsection
 
 @section('plugin_js')
@@ -17,6 +20,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js" integrity="sha512-GMGzUEevhWh8Tc/njS0bDpwgxdCJLQBWG3Z2Ct+JGOpVnEmjvNx6ts4v6A2XJf1HOrtOsfhv3hBKpK9kE5z8AQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.js"></script>
 <script src="{{ asset('assets/back/vendors/general/select2/dist/js/select2.full.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/orgchart/js/html2canvas.js') }}" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="{{ asset('assets/orgchart/js/jquery.orgchart.js') }}" type="text/javascript"></script>
 @endsection
 
 @section('custom_js')
@@ -79,6 +85,24 @@
             $('#modalShowTitle').html($(this).attr('title'));
         });
     }, 500);
+
+    var datascource = {
+        'name': 'Rektor',
+        'title': 'Universitas',
+        'children': [            
+            { 'name': 'Dekan', 'title': 'Fakultas Teknologi Industri', 
+                'children': [
+                    { 'name': 'Kaprodi', 'title': 'Program Studi Teknik Informatika' },
+                ],
+            },
+        ],
+    };
+
+    $('#chart-container').orgchart({
+      'data' : datascource,
+      'nodeContent': 'title',
+      // 'visibleLevel': 2,
+    });
 </script>
 @endsection
 
@@ -164,13 +188,21 @@
         </div>
     </div>
 
-
     <div class="row">
         <div class="col-md-12">
             <div class="kt-portlet">
+
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            <i class="fas fa-sitemap"></i>&nbsp; Struktur Organisasi Universitas
+                        </h3>
+                    </div>
+                </div>
+
                 <div class="kt-portlet__body">
                 	<!-- TODO: buat struktur organisasi menggunakan tree js -->
-                	
+                	<div id="chart-container" class="text-center"></div>
                 </div>
             </div>
         </div>

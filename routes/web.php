@@ -118,10 +118,6 @@ Route::group(['middleware' => ['auth']], function () {
                 Route::delete('delete/{id}', [AdminExitStatusController::class, 'delete'])->name('delete');
             });
 
-            Route::group(['prefix' => 'component', 'as' => 'component.'], function() {
-
-            });
-
             Route::group(['prefix' => 'province', 'as' => 'province.'], function() {
 
             });
@@ -168,12 +164,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('show/{id}', [AdminUserController::class, 'show'])->name('show');
             Route::get('edit/{id}', [AdminUserController::class, 'edit'])->name('edit');
             Route::get('create', [AdminUserController::class, 'create'])->name('create');
-            Route::get('store', [AdminUserController::class, 'store'])->name('store');
-            Route::get('update/{id}', [AdminUserController::class, 'update'])->name('update');
-            Route::get('delete/{id}', [AdminUserController::class, 'delete'])->name('delete');
+            Route::post('store', [AdminUserController::class, 'store'])->name('store');
+            Route::put('update/{id}', [AdminUserController::class, 'update'])->name('update');
+            Route::delete('delete/{id}', [AdminUserController::class, 'delete'])->name('delete');
 
             Route::group(['prefix' => 'password', 'as' => 'password.'], function() {
-                Route::get('change', [AdminUserController::class, 'changePassword'])->name('change');
+                Route::get('change/{id}', [AdminUserController::class, 'changePassword'])->name('change');
                 Route::put('update/{id}', [AdminUserController::class, 'updatePassword'])->name('update');
             });
         });
@@ -181,6 +177,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['role:academic'], 'prefix' => 'academic', 'as' => 'academic.'], function() {
         Route::get('home', [AcademicHomeController::class, 'index'])->name('home');
+
+        Route::group(['prefix' => 'ref', 'as' => 'ref.'], function() {
+            Route::group(['prefix' => 'component', 'as' => 'component.'], function() {
+
+            });
+        });
 
         Route::group(['prefix' => 'period', 'as' => 'period.'], function() {
 

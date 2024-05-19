@@ -5,7 +5,7 @@
 	</a>
 </li>
 
-<li class="kt-menu__item  @if(\Request::segment(2) == 'users') kt-menu__item--active @endif" aria-haspopup="true">
+<li class="kt-menu__item  @if(\Request::segment(2) == 'user') kt-menu__item--active @endif" aria-haspopup="true">
 	<a href="{{ route('admin.user.index') }}" class="kt-menu__link ">
 		<i class="kt-menu__link-icon flaticon2-avatar"></i>
 		<span class="kt-menu__link-text">Pengguna</span>

@@ -23,6 +23,7 @@ use App\Models\Role;
 use App\Models\RoleMember;
 use App\Models\MasterStudent;
 use App\Models\MasterLecture;
+use App\Models\MasterInstitution;
 
 class UserController extends Controller
 {
@@ -42,26 +43,63 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        return view('admin.user.create', get_defined_vars());
+        $dropdownRole = DB::select('SELECT * FROM roles ORDER BY name ASC');
+        $dropdownInstitution = MasterInstitution::orderBy('institution_type_id')->orderBy('code')->get();
+
+        return view('admin.user.create', get_defined_vars())->renderSections()['content'];
     }
 
     public function edit($id)
     {
         $data = User::find($id);
+        $selectedRole = @DB::select('SELECT * FROM model_has_roles WHERE model_id = ?', [$data->id])[0];
+        $dropdownRole = DB::select('SELECT * FROM roles ORDER BY name ASC');
+        $dropdownInstitution = MasterInstitution::orderBy('institution_type_id')->orderBy('code')->get();
 
-        return view('admin.user.edit', get_defined_vars());
+        return view('admin.user.edit', get_defined_vars())->renderSections()['content'];
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        $rules = [
+            'username' => 'required|string|unique:users',
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users',
+            'password' => 'required|string|confirmed',
+        ];
+
+        $ruleMessages = [];
+
+        $validate = Validator::make($request->all(), $rules, $ruleMessages);
+
+        if ($validate->fails()) {
+            \Session::flash('notification', ['level' => 'error', 'message' => $validate->errors()->first()]);
+
+            return redirect()->back();
+        }
 
         DB::beginTransaction();
 
         try {
+            $user = new User;
+            $user->uuid = Str::uuid();
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->email_verified_at = date('Y-m-d H:i:s');
+            $user->is_active = $request->is_active;
+            $user->save();
+
+            $role = new RoleMember;
+            $role->role_id = $request->role_id;
+            $role->model_id = $user->id;
+            $role->model_type = 'App\Models\User';
+            $role->institution_id = $request->institution_id;
+            $role->save();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menambahkan pengguna baru']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menambahkan pengguna baru']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -72,14 +110,40 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        
+        $rules = [
+            'name' => 'required|string',
+            'email' => 'required|string',
+        ];
+
+        $ruleMessages = [];
+
+        $validate = Validator::make($request->all(), $rules, $ruleMessages);
+
+        if ($validate->fails()) {
+            \Session::flash('notification', ['level' => 'error', 'message' => $validate->errors()->first()]);
+
+            return redirect()->back();
+        }
+
         DB::beginTransaction();
 
         try {
+            $user = User::find($id);
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->is_active = $request->is_active;
+            $user->save();
+
+            $role = RoleMember::where(['model_id' => $user->id])->first();
+            $role->role_id = $request->role_id;
+            $role->model_id = $user->id;
+            $role->model_type = 'App\Models\User';
+            $role->institution_id = $request->institution_id;
+            $role->save();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menambahkan pengguna baru']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil mengubah pengguna']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
@@ -93,11 +157,51 @@ class UserController extends Controller
         DB::beginTransaction();
 
         try {
-            $data = User::find($id);
-            $data->delete();
+            $role = RoleMember::where('model_id', $id)->delete();
+            $data = User::find($id)->delete();
 
             DB::commit();
-            Session::flash('notification', ['level' => 'error', 'message' => 'Berhasil menghapus pengguna']);
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil menghapus pengguna']);
+        } catch (Exception $ex) {
+            DB::rollback();
+            Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function changePassword($id)
+    {
+        $data = User::find($id);
+
+        return view('admin.user.change-password', get_defined_vars())->renderSections()['content'];
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $rules = [
+            'password' => 'required|string|confirmed',
+        ];
+
+        $ruleMessages = [];
+
+        $validate = Validator::make($request->all(), $rules, $ruleMessages);
+
+        if ($validate->fails()) {
+            \Session::flash('notification', ['level' => 'error', 'message' => $validate->errors()->first()]);
+
+            return redirect()->back();
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $user = User::find($id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            
+            DB::commit();
+            Session::flash('notification', ['level' => 'success', 'message' => 'Berhasil mengubah pengguna']);
         } catch (Exception $ex) {
             DB::rollback();
             Session::flash('notification', ['level' => 'error', 'message' => $ex->getMessage()]);

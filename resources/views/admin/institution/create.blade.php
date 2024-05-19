@@ -61,7 +61,7 @@
 			<div class="col-md-6">
 				<label>Akreditasi</label>
 				<div class="form-group">
-					<input type="text" class="form-control" name="accreditation" required value="{{ old('accreditation') }}">
+					<input type="text" class="form-control" name="accreditation" value="{{ old('accreditation') }}">
 				</div>
 			</div>
 

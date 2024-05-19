@@ -87,7 +87,7 @@ class UsersTableSeeder extends Seeder
         $lectureRole = RoleMember::create([
             'role_id' => 4,
             'model_type' => 'App\Models\User',
-            'institution_id' => 1,
+            'institution_id' => 3,
             'model_id' => $lecture->id,
         ]);
 
