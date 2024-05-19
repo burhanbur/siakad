@@ -9,7 +9,17 @@ class TranLectureInstitution extends MultiplePrimaryKey
 {
     use HasFactory;
 
-    protected $primaryKey = ['lecutre_id', 'institution_id'];
+    protected $primaryKey = ['lecture_id', 'institution_id'];
     protected $table = 'tran_lecture_institutions';
     protected $guarded = [];
+
+    public function lecture()
+    {
+        return $this->belongsTo(MasterLecture::class, 'lecture_id');
+    }
+
+    public function institution()
+    {
+        return $this->belongsTo(MasterInstitution::class, 'institution_id');
+    }
 }

@@ -11,4 +11,9 @@ class TranLectureEducation extends Model
 
     protected $table = 'tran_lecture_educations';
     protected $guarded = [];
+
+    public function lecture()
+    {
+        return $this->belongsTo(MasterLecture::class, 'lecture_id');
+    }
 }

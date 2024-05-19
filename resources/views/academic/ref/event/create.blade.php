@@ -1,16 +1,15 @@
 @section('content')
-<form method="POST" action="{{ route('admin.ref.event.update', ['id' => $data->id]) }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('academic.ref.event.store') }}" enctype="multipart/form-data">
 @csrf
-@method('PUT')
 	<div class="modal-body">
 		<label>Kode <b class="text-danger">*</b></label>
 		<div class="form-group">
-			<input type="text" class="form-control" name="code" required value="{{ $data->code }}">
+			<input type="text" class="form-control" name="code" required value="{{ old('code') }}">
 		</div>
 
 		<label>Kegiatan Akademik <b class="text-danger">*</b></label>
 		<div class="form-group">
-			<input type="text" class="form-control" name="name" required value="{{ $data->name }}">
+			<input type="text" class="form-control" name="name" required value="{{ old('name') }}">
 		</div>
 	</div>
 

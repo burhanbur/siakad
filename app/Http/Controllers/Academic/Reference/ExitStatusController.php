@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Reference;
+namespace App\Http\Controllers\Academic\Reference;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -27,19 +27,19 @@ class ExitStatusController extends Controller
     {
         $data = RefExitStatus::orderBy('id')->get();
 
-        return view('admin.ref.exit-status.index', get_defined_vars());
+        return view('academic.ref.exit-status.index', get_defined_vars());
     }
 
     public function create(Request $request)
     {
-        return view('admin.ref.exit-status.create', get_defined_vars())->renderSections()['content'];
+        return view('academic.ref.exit-status.create', get_defined_vars())->renderSections()['content'];
     }
 
     public function edit($id)
     {
         $data = RefExitStatus::find($id);
 
-        return view('admin.ref.exit-status.edit', get_defined_vars())->renderSections()['content'];
+        return view('academic.ref.exit-status.edit', get_defined_vars())->renderSections()['content'];
     }
 
     public function store(Request $request)

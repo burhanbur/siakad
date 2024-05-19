@@ -88,9 +88,9 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('academic.home') }}">Dashboard</a></li>
                     <li class="breadcrumb-item">Konfigurasi</li>
-                    <li class="breadcrumb-item active" aria-current="page">Status Keluar</li>
+                    <li class="breadcrumb-item active" aria-current="page">Kegiatan Akademik</li>
                 </ol>
             </nav>
         </div>
@@ -104,12 +104,12 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-                            <i class="fas fa-university"></i> Status Keluar
+                            <i class="fas fa-university"></i> Kegiatan Akademik
                         </h3>
                     </div>
 
                     <div style="text-align: right; padding-top: 0.5%;">
-                        <a href="javascript:void(0)" value="{{ route('admin.ref.exit-status.create') }}" class="btn btn-success modalShow" title="Tambah Data" data-toggle="modal" data-target="#modalShow"><i class="fa fa-plus-circle"></i> Tambah Status Keluar</a>
+                        <a href="javascript:void(0)" value="{{ route('academic.ref.event.create') }}" class="btn btn-success modalShow" title="Tambah Data" data-toggle="modal" data-target="#modalShow"><i class="fa fa-plus-circle"></i> Tambah Kegiatan Akademik</a>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
@@ -118,7 +118,8 @@
                             <thead>
                                 <tr>
                                     <th class="text-center" width="50px">No</th>
-                                    <th class="text-center">Status Keluar</th>
+                                    <th class="text-center">Kode</th>
+                                    <th class="text-center">Kegiatan</th>
                                     <th class="text-center" width="120px">#</th>
                                 </tr>
                             </thead>
@@ -127,11 +128,14 @@
                                 <tr>
                                     <td class="text-center align-middle">{{ $i+1 }}</td>
                                     <td class="align-middle">
+                                        {{ $item->code }}
+                                    </td>
+                                    <td class="align-middle">
                                         {{ $item->name }}
                                     </td>
                                     <td class="align-middle text-center">
-                                        <a href="javascript:void(0)" value="{{ route('admin.ref.exit-status.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-icon btn-info modalShow" data-toggle="modal" title="Ubah Data" data-target="#modalShow"><i class="fa fa-edit"></i></a>
-                                        <form style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" action="{{ route('admin.ref.exit-status.delete', ['id' => $item->id]) }}" method="POST">
+                                        <a href="javascript:void(0)" value="{{ route('academic.ref.event.edit', ['id' => $item->id]) }}" class="btn btn-sm btn-icon btn-info modalShow" data-toggle="modal" title="Ubah Data" data-target="#modalShow"><i class="fa fa-edit"></i></a>
+                                        <form style="display: inline;" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')" action="{{ route('academic.ref.event.delete', ['id' => $item->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-icon btn-danger"><i class="fa fa-trash"></i></button>                                            

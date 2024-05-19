@@ -13,9 +13,6 @@ use App\Http\Controllers\Admin\LectureController as AdminLectureController;
 use App\Http\Controllers\Admin\StudentController as AdminStudentController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-use App\Http\Controllers\Admin\Reference\EventController as AdminEventController;
-use App\Http\Controllers\Admin\Reference\ExitStatusController as AdminExitStatusController;
-
 
 /* Academic Controller */
 use App\Http\Controllers\Academic\AcademicPeriodController as AcademicPeriodController;
@@ -31,6 +28,9 @@ use App\Http\Controllers\Academic\ScheduleController as AcademicScheduleControll
 use App\Http\Controllers\Academic\StudentController as AcademicStudentController;
 use App\Http\Controllers\Academic\SubjectController as AcademicSubjectController;
 use App\Http\Controllers\Academic\TranscriptController as AcademicTranscriptController;
+
+use App\Http\Controllers\Academic\Reference\EventController as AcademicEventController;
+use App\Http\Controllers\Academic\Reference\ExitStatusController as AcademicExitStatusController;
 
 
 /* Student Controller */
@@ -100,24 +100,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('home', [AdminHomeController::class, 'index'])->name('home');
 
         Route::group(['prefix' => 'ref', 'as' => 'ref.'], function() {
-            Route::group(['prefix' => 'event', 'as' => 'event.'], function() {
-                Route::get('/', [AdminEventController::class, 'index'])->name('index');
-                Route::get('edit/{id}', [AdminEventController::class, 'edit'])->name('edit');
-                Route::get('create', [AdminEventController::class, 'create'])->name('create');
-                Route::post('store', [AdminEventController::class, 'store'])->name('store');
-                Route::put('update/{id}', [AdminEventController::class, 'update'])->name('update');
-                Route::delete('delete/{id}', [AdminEventController::class, 'delete'])->name('delete');
-            });
-
-            Route::group(['prefix' => 'exit-status', 'as' => 'exit-status.'], function() {
-                Route::get('/', [AdminExitStatusController::class, 'index'])->name('index');
-                Route::get('edit/{id}', [AdminExitStatusController::class, 'edit'])->name('edit');
-                Route::get('create', [AdminExitStatusController::class, 'create'])->name('create');
-                Route::post('store', [AdminExitStatusController::class, 'store'])->name('store');
-                Route::put('update/{id}', [AdminExitStatusController::class, 'update'])->name('update');
-                Route::delete('delete/{id}', [AdminExitStatusController::class, 'delete'])->name('delete');
-            });
-
             Route::group(['prefix' => 'province', 'as' => 'province.'], function() {
 
             });
@@ -151,6 +133,11 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::group(['prefix' => 'lecture', 'as' => 'lecture.'], function() {
             Route::get('/', [AdminLectureController::class, 'index'])->name('index');
+            Route::get('edit/{id}', [AdminLectureController::class, 'edit'])->name('edit');
+            Route::get('create', [AdminLectureController::class, 'create'])->name('create');
+            Route::post('store', [AdminLectureController::class, 'store'])->name('store');
+            Route::put('update/{id}', [AdminLectureController::class, 'update'])->name('update');
+            Route::delete('delete/{id}', [AdminLectureController::class, 'delete'])->name('delete');
 
         });
 
@@ -179,8 +166,26 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('home', [AcademicHomeController::class, 'index'])->name('home');
 
         Route::group(['prefix' => 'ref', 'as' => 'ref.'], function() {
-            Route::group(['prefix' => 'component', 'as' => 'component.'], function() {
+            Route::group(['prefix' => 'event', 'as' => 'event.'], function() {
+                Route::get('/', [AcademicEventController::class, 'index'])->name('index');
+                Route::get('edit/{id}', [AcademicEventController::class, 'edit'])->name('edit');
+                Route::get('create', [AcademicEventController::class, 'create'])->name('create');
+                Route::post('store', [AcademicEventController::class, 'store'])->name('store');
+                Route::put('update/{id}', [AcademicEventController::class, 'update'])->name('update');
+                Route::delete('delete/{id}', [AcademicEventController::class, 'delete'])->name('delete');
+            });
 
+            Route::group(['prefix' => 'exit-status', 'as' => 'exit-status.'], function() {
+                Route::get('/', [AcademicExitStatusController::class, 'index'])->name('index');
+                Route::get('edit/{id}', [AcademicExitStatusController::class, 'edit'])->name('edit');
+                Route::get('create', [AcademicExitStatusController::class, 'create'])->name('create');
+                Route::post('store', [AcademicExitStatusController::class, 'store'])->name('store');
+                Route::put('update/{id}', [AcademicExitStatusController::class, 'update'])->name('update');
+                Route::delete('delete/{id}', [AcademicExitStatusController::class, 'delete'])->name('delete');
+            });
+
+            Route::group(['prefix' => 'component', 'as' => 'component.'], function() {
+                Route::get('home', [AcademicHomeController::class, 'index'])->name('index');
             });
         });
 

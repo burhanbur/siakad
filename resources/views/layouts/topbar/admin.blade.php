@@ -19,21 +19,6 @@
 	<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
 		<ul class="kt-menu__subnav">
 			<li class="kt-menu__item " aria-haspopup="true">
-				<a href="{{ route('admin.ref.event.index') }}" class="kt-menu__link ">
-					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Kegiatan Akademik</span>
-				</a>
-			</li>
-			<li class="kt-menu__item " aria-haspopup="true">
-				<a href="{{ route('admin.ref.exit-status.index') }}" class="kt-menu__link ">
-					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Status Keluar</span>
-				</a>
-			</li>
-			<li class="kt-menu__item " aria-haspopup="true">
-				<a href="" class="kt-menu__link ">
-					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Komponen Penilaian</span>
-				</a>
-			</li>
-			<li class="kt-menu__item " aria-haspopup="true">
 				<a href="" class="kt-menu__link ">
 					<i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Provinsi</span>
 				</a>

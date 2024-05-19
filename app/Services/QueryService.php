@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 
+use App\Models\MasterInstitution;
+
 class QueryService
 {
 	private static $instance = null;
@@ -34,6 +36,18 @@ class QueryService
 		";
 
 		@$data = DB::select($sql, [$userId])[0];
+
+		if ($data) {
+			$returnValue = $data;
+		}
+
+		return $returnValue;
+	}
+	public function getInstitutionById($id)
+	{
+		$returnValue = [];
+
+		$data = MasterInstitution::find($id);
 
 		if ($data) {
 			$returnValue = $data;

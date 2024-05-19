@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Reference;
+namespace App\Http\Controllers\Academic\Reference;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -26,19 +26,19 @@ class EventController extends Controller
     {
         $data = RefAcademicEvent::orderBy('id')->get();
 
-        return view('admin.ref.event.index', get_defined_vars());
+        return view('academic.ref.event.index', get_defined_vars());
     }
 
     public function create(Request $request)
     {
-        return view('admin.ref.event.create', get_defined_vars())->renderSections()['content'];
+        return view('academic.ref.event.create', get_defined_vars())->renderSections()['content'];
     }
 
     public function edit($id)
     {
         $data = RefAcademicEvent::find($id);
 
-        return view('admin.ref.event.edit', get_defined_vars())->renderSections()['content'];
+        return view('academic.ref.event.edit', get_defined_vars())->renderSections()['content'];
     }
 
     public function store(Request $request)
